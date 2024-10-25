@@ -1,4 +1,4 @@
-<html><head>
+<html><head><base href="/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESTAURANTE EN FAMILIA - Menú Dorado</title>
@@ -34,17 +34,72 @@
             position: relative;
         }
 
-        h1 {
-            color: var(--dark-gold);
+        .logo-container {
             text-align: center;
-            font-size: 3.5em; 
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-            letter-spacing: 3px;
-            font-weight: 700;
-            border: 2px solid var(--gold);
-            padding: 20px;
-            background: linear-gradient(to right, var(--pale-gold), var(--cream), var(--pale-gold));
+            margin-bottom: 40px; /* Increased from 30px */
+            padding: 20px 0; /* Added padding */
+        }
+
+        .logo-image {
+            max-width: 400px; /* Increased from 300px */
+            height: auto;
+            width: 100%; /* Added to ensure responsiveness */
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px; 
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .logo-image {
+                max-width: 300px; /* Increased from 200px */
+            }
+            
+            .menu-section {
+                margin-bottom: 20px;
+            }
+            
+            .menu-section h2 {
+                font-size: 1.8em;
+                padding: 15px 0;
+            }
+            
+            .menu-section h2::before,
+            .menu-section h2::after {
+                display: none;
+            }
+            
+            .banner-image {
+                height: 120px;
+            }
+            
+            .menu-items {
+                padding: 10px;
+            }
+            
+            .menu-item {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+            }
+            
+            .item-name, .item-price {
+                font-size: 1.1em;
+                margin-bottom: 5px;
+            }
+            
+            .item-price {
+                align-self: flex-end;
+            }
+
+            .allergen-image {
+                width: 160px; /* Increased from 120px */
+                margin-top: 15px;
+            }
         }
 
         .menu-section {
@@ -127,7 +182,6 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-
         .menu-item::before {
             content: "";
             position: absolute;
@@ -173,60 +227,10 @@
             }
         }
 
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px; 
-            }
-            
-            .container {
-                padding: 10px;
-            }
-            
-            h1 {
-                font-size: 2em;
-                padding: 15px;
-                letter-spacing: 1px;
-            }
-            
-            .menu-section {
-                margin-bottom: 20px;
-            }
-            
-            .menu-section h2 {
-                font-size: 1.8em;
-                padding: 15px 0;
-            }
-            
-            .menu-section h2::before,
-            .menu-section h2::after {
-                display: none;
-            }
-            
-            .banner-image {
-                height: 120px;
-            }
-            
-            .menu-items {
-                padding: 10px;
-            }
-            
-            .menu-item {
-                flex-direction: column;
-                align-items: flex-start;
-                padding: 10px;
-            }
-            
-            .item-name, .item-price {
-                font-size: 1.1em;
-                margin-bottom: 5px;
-            }
-            
-            .item-price {
-                align-self: flex-end;
-            }
-        }
-
         .allergen-notice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 40px;
             border: 2px solid var(--gold);
             border-radius: 10px;
@@ -235,164 +239,640 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
+        .allergen-image {
+            width: 200px; /* Increased from 150px */
+            height: auto;
+            margin-top: 20px;
+        }
+
+        .allergen-text {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
         .allergen-notice h2 {
             color: var(--dark-gold);
-            text-align: center;
             margin-bottom: 15px;
             font-size: 1.8em;
         }
 
         .allergen-notice p {
-            text-align: center;
             color: var(--charcoal);
             font-size: 1.1em;
             line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
-            .allergen-notice {
-                margin-top: 30px;
-                padding: 15px;
-            }
+        /* New styles for language selection */
+        .language-select {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
 
-            .allergen-notice h2 {
-                font-size: 1.5em;
-            }
+        .language-select select {
+            padding: 5px 10px;
+            font-size: 16px;
+            border: 2px solid var(--gold);
+            background-color: var(--cream);
+            color: var(--charcoal);
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
-            .allergen-notice p {
-                font-size: 1em;
-            }
+        .language-select select:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--gold);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>
-            RESTAURANTE EN FAMILIA
-        </h1>
+        <div class="language-select">
+            <select id="languageSelect">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+                <option value="de">Deutsch</option>
+            </select>
+        </div>
+
+        <div class="logo-container">
+            <img src="./images/logo.png" alt="Restaurante en Familia - Mary y Landy" class="logo-image">
+        </div>
         
         <div class="menu-section">
-            <img src="images/entrantes_calientes.jpg" alt="Entrantes calientes" class="banner-image">
+            <img src="./images/entrantes_calientes.jpg" alt="Entrantes calientes" class="banner-image">
             <h2>Entrantes Calientes</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/entrantes_frios.jpg" alt="Entrantes Fríos" class="banner-image">
+            <img src="./images/entrantes_frios.jpg" alt="Entrantes Fríos" class="banner-image">
             <h2>Entrantes Fríos</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/ensaladas.jpg" alt="Ensalada" class="banner-image">
+            <img src="./images/ensaladas.jpg" alt="Ensalada" class="banner-image">
             <h2>Ensaladas</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/tostas.jpg" alt="Tostas" class="banner-image">
+            <img src="./images/tostas.jpg" alt="Tostas" class="banner-image">
             <h2>Tostas</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/salsas.jpg" alt="Salsas" class="banner-image">
+            <img src="./images/salsas.jpg" alt="Salsas" class="banner-image">
             <h2>Salsas</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/pescados.jpg" alt="Pescado" class="banner-image">
+            <img src="./images/pescados.jpg" alt="Pescado" class="banner-image">
             <h2>Pescados</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/carnes.jpg" alt="Carnes" class="banner-image">
+            <img src="./images/carnes.jpg" alt="Carnes" class="banner-image">
             <h2>Carnes</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/carnes_brasa.jpg" alt="Carnes a la brasa" class="banner-image">
+            <img src="./images/carnes_brasa.jpg" alt="Carnes a la brasa" class="banner-image">
             <h2>Carnes a la Brasa</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/pastas.jpg" alt="Pasta" class="banner-image">
+            <img src="./images/pastas.jpg" alt="Pasta" class="banner-image">
             <h2>Pastas</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/arroces.jpg" alt="Arroces" class="banner-image">
+            <img src="./images/arroces.jpg" alt="Arroces" class="banner-image">
             <h2>Arroces</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
         
         <div class="menu-section">
-            <img src="images/platos_especiales.jpg" alt="Plato especial" class="banner-image">
+            <img src="./images/platos_especiales.jpg" alt="Plato especial" class="banner-image">
             <h2>Platos Especiales</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
             </div>
         </div>
 
         <div class="menu-section">
-            <img src="images/refrescos.jpg" alt="Refrescos" class="banner-image">
+            <img src="./images/refrescos.jpg" alt="Refrescos" class="banner-image">
             <h2>Refrescos</h2>
             <div class="menu-items">
-                <!-- Los items del menú se agregarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+
+        <div class="menu-section">
+            <img src="./images/cocteles.jpg" alt="Cócteles y Bebidas Espirituosas" class="banner-image">
+            <h2>Cócteles y Licores</h2>
+            <div class="menu-items">
             </div>
         </div>
 
         <div class="allergen-notice">
-            <h2>⚠️ Aviso de Alérgenos</h2>
-            <p>Para información sobre alérgenos en nuestros platos, por favor consulte con nuestro personal. Estamos comprometidos con su seguridad y bienestar.</p>
+            <div class="allergen-text">
+                <h2>⚠️ Aviso de Alérgenos</h2>
+                <p>Para información sobre alérgenos en nuestros platos, por favor consulte con nuestro personal. Estamos comprometidos con su seguridad y bienestar.</p>
+            </div>
+            <img src="./images/alergenos.png" alt="Aviso de alérgenos" class="allergen-image">
         </div>
     </div>
-        
+
     <script>
-        // Función para agregar elementos del menú dinámicamente
+        const translations = {
+            es: {
+                title: "RESTAURANTE EN FAMILIA",
+                subtitle: "por Mary y Landy",
+                sections: [
+                    "Entrantes Calientes", "Entrantes Fríos", "Ensaladas", "Tostas", "Salsas",
+                    "Pescados", "Carnes", "Carnes a la Brasa", "Pastas", "Arroces",
+                    "Platos Especiales", "Refrescos", "Cócteles y Licores"
+                ],
+                allergenNotice: {
+                    title: "⚠️ Aviso de Alérgenos",
+                    text: "Para información sobre alérgenos en nuestros platos, por favor consulte con nuestro personal. Estamos comprometidos con su seguridad y bienestar."
+                },
+                menuItems: {
+                    "Hamburguesa de Black Angus": "Hamburguesa de Black Angus",
+                    "Gambas al Ajillo": "Gambas al Ajillo",
+                    "Croquetas caseras": "Croquetas caseras",
+                    "Carne fiesta": "Carne fiesta",
+                    "Pimientos de Padrón": "Pimientos de Padrón",
+                    "Tiras de Pollo": "Tiras de Pollo",
+                    "Huevos Rotos": "Huevos Rotos",
+                    "Revuelto de setas y gambas": "Revuelto de setas y gambas",
+                    "Gambas en tempura": "Gambas en tempura",
+                    "Queso Asado": "Queso Asado",
+                    "Croquetas caseras por unidad": "Croquetas caseras por unidad",
+                    "Papas Locas": "Papas Locas",
+                    "Tamales": "Tamales",
+                    "Tostones": "Tostones",
+                    "Frituras de maíz": "Frituras de maíz",
+                    "Pata asada": "Pata asada",
+                    "Tabla de queso manchego": "Tabla de queso manchego",
+                    "Surtido de quesos": "Surtido de quesos",
+                    "Tabla de queso fresco y jamón serrano": "Tabla de queso fresco y jamón serrano",
+                    "Nachos a la mary mixtos": "Nachos a la mary mixtos",
+                    "Aguacate relleno de salmón": "Aguacate relleno de salmón",
+                    "Tabla de queso fresco": "Tabla de queso fresco",
+                    "Ensalada de la casa": "Ensalada de la casa",
+                    "Ensalada César": "Ensalada César",
+                    "Ensalada de aguacate y salmón": "Ensalada de aguacate y salmón",
+                    "Tosta de ajo": "Tosta de ajo",
+                    "Tosta de serrano y tumaca": "Tosta de serrano y tumaca",
+                    "Tosta de solomillo y rulo de cabra": "Tosta de solomillo y rulo de cabra",
+                    "Tosta de serrano y manchego": "Tosta de serrano y manchego",
+                    "Tosta de aguacate y salmón": "Tosta de aguacate y salmón",
+                    "Tosta de ajo, tomate y queso": "Tosta de ajo, tomate y queso",
+                    "Salsa de champiñones": "Salsa de champiñones",
+                    "Salsa de Roquefort": "Salsa de Roquefort",
+                    "Salsa de pimienta verde": "Salsa de pimienta verde",
+                    "Bacalao confitado": "Bacalao confitado",
+                    "Merluza en salsa verde": "Merluza en salsa verde",
+                    "Bacalao encebollado": "Bacalao encebollado",
+                    "Gordon Blue pollo": "Gordon Blue pollo",
+                    "Gordon blue de ternera": "Gordon blue de ternera",
+                    "Gordon Blue de cerdo": "Gordon Blue de cerdo",
+                    "Escalope de pollo": "Escalope de pollo",
+                    "Escalope de ternera": "Escalope de ternera",
+                    "Escalope de cerdo": "Escalope de cerdo",
+                    "Milanesa": "Milanesa",
+                    "Pechuga a la plancha": "Pechuga a la plancha",
+                    "Carne mechada": "Carne mechada",
+                    "Carne Cabra": "Carne Cabra",
+                    "Pollo de corral": "Pollo de corral",
+                    "1/2 Pollo de corral": "1/2 Pollo de corral",
+                    "1/2 Tira de costilla BBQ": "1/2 Tira de costilla BBQ",
+                    "Tira de costilla de cerdo BBQ": "Tira de costilla de cerdo BBQ",
+                    "Entrecot de ternera": "Entrecot de ternera",
+                    "Solomillo de ternera": "Solomillo de ternera",
+                    "Chateaubriand": "Chateaubriand",
+                    "Bistec de cerdo": "Bistec de cerdo",
+                    "Bistec de ternera": "Bistec de ternera",
+                    "Parrillada mixta": "Parrillada mixta",
+                    "Secreto Ibérico": "Secreto Ibérico",
+                    "1/2 Costillar de cerdo BBQ": "1/2 Costillar de cerdo BBQ",
+                    "Costillar de cerdo BBQ": "Costillar de cerdo BBQ",
+                    "Puntas de solomillo salteadas con verduras": "Puntas de solomillo salteadas con verduras",
+                    "Solomillo salteado con verduras": "Solomillo salteado con verduras",
+                    "Tallarines del mar": "Tallarines del mar",
+                    "Espagueti Carbonara": "Espagueti Carbonara",
+                    "Tallarines salteados con verduras, setas y gambas": "Tallarines salteados con verduras, setas y gambas",
+                    "Lasaña de carne": "Lasaña de carne",
+                    "Tallarines de setas y gambas": "Tallarines de setas y gambas",
+                    "Espagueti boloñesa": "Espagueti boloñesa",
+                    "Arroz de bacalao y coliflor": "Arroz de bacalao y coliflor",
+                    "Arroz negro de sepia, gambas y merluza": "Arroz negro de sepia, gambas y merluza",
+                    "Arroz meloso de pollo, setas y gambas": "Arroz meloso de pollo, setas y gambas",
+                    "Arroz meloso de solomillo y verduras": "Arroz meloso de solomillo y verduras",
+                    "Risotto de gambas, cherri confitado y burrata": "Risotto de gambas, cherri confitado y burrata",
+                    "Paella de pescado y marisco": "Paella de pescado y marisco",
+                    "Paella mixta": "Paella mixta",
+                    "Paella de verduras": "Paella de verduras",
+                    "Completa cubana de pata asada": "Completa cubana de pata asada",
+                    "Completa cubana de bistec de cerdo": "Completa cubana de bistec de cerdo",
+                    "Completa cubana de carne mechada": "Completa cubana de carne mechada",
+                    "Completa cubana de pollo": "Completa cubana de pollo",
+                    "Completa cubana de masa de cerdo frita": "Completa cubana de masa de cerdo frita",
+                    "Coca-Cola": "Coca-Cola",
+                    "Fanta Naranja": "Fanta Naranja",
+                    "Fanta Limón": "Fanta Limón",
+                    "Sprite": "Sprite",
+                    "Nestea": "Nestea",
+                    "Agua mineral (50cl)": "Agua mineral (50cl)",
+                    "Agua con gas": "Agua con gas",
+                    "Zumo de naranja natural": "Zumo de naranja natural",
+                    "Cerveza (caña)": "Cerveza (caña)",
+                    "Cerveza sin alcohol": "Cerveza sin alcohol",
+                    "Cocacola original grande": "Cocacola original grande",
+                    "Cocacola cero grande": "Cocacola cero grande",
+                    "Fanta naranja grande": "Fanta naranja grande",
+                    "Fanta limón grande": "Fanta limón grande",
+                    "Acuarius naranja": "Acuarius naranja",
+                    "Acuarius limón": "Acuarius limón",
+                    "Nestea mango-piña": "Nestea mango-piña",
+                    "Nestea maracuya": "Nestea maracuya",
+                    "Appletteiser": "Appletteiser",
+                    "Zumos de bote": "Zumos de bote",
+                    "Red Bull": "Red Bull",
+                    "Arehucas Oro": "Arehucas Oro",
+                    "Arehucas Blanco": "Arehucas Blanco",
+                    "Matusalén 10": "Matusalén 10",
+                    "Matusalén 15": "Matusalén 15",
+                    "Havana 7": "Havana 7",
+                    "Havana 3": "Havana 3",
+                    "Bacardí": "Bacardí",
+                    "Guajiro": "Guajiro",
+                    "Brugal": "Brugal",
+                    "Barceló": "Barceló",
+                    "Vodka Absolut": "Vodka Absolut",
+                    "Vodka Smirnoff": "Vodka Smirnoff",
+                    "Cacique": "Cacique",
+                    "Legendario": "Legendario",
+                    "Cañey": "Cañey",
+                    "Pampero": "Pampero",
+                    "Diplomático": "Diplomático",
+                    "Jameson": "Jameson",
+                    "100 Pipers": "100 Pipers",
+                    "Jack Daniels": "Jack Daniels",
+                    "J.B.": "J.B.",
+                    "Ballantines": "Ballantines",
+                    "Chivas Regal": "Chivas Regal",
+                    "White Label": "White Label",
+                    "Bucana": "Bucana",
+                    "Glenfiddich": "Glenfiddich",
+                    "Beefeater": "Beefeater",
+                    "Gordons": "Gordons",
+                    "Larios": "Larios",
+                    "Bombay": "Bombay",
+                    "Puerto de Indias": "Puerto de Indias",
+                    "Tanqueray": "Tanqueray",
+                    "Hendricks": "Hendricks",
+                    "Brockmans": "Brockmans"
+                }
+            },
+            en: {
+                title: "FAMILY RESTAURANT",
+                subtitle: "by Mary and Landy",
+                sections: [
+                    "Hot Appetizers", "Cold Appetizers", "Salads", "Toasts", "Sauces",
+                    "Fish", "Meats", "Grilled Meats", "Pasta", "Rice Dishes",
+                    "Special Dishes", "Drinks", "Cocktails & Spirits"
+                ],
+                allergenNotice: {
+                    title: "⚠️ Allergen Notice",
+                    text: "For information about allergens in our dishes, please consult our staff. We are committed to your safety and well-being."
+                },
+                menuItems: {
+                    "Hamburguesa de Black Angus": "Black Angus Burger",
+                    "Gambas al Ajillo": "Garlic Shrimp",
+                    "Croquetas caseras": "Homemade Croquettes",
+                    "Carne fiesta": "Fiesta Meat",
+                    "Pimientos de Padrón": "Padrón Peppers",
+                    "Tiras de Pollo": "Chicken Strips",
+                    "Huevos Rotos": "Broken Eggs",
+                    "Revuelto de setas y gambas": "Scrambled Mushrooms and Shrimp",
+                    "Gambas en tempura": "Tempura Shrimp",
+                    "Queso Asado": "Grilled Cheese",
+                    "Croquetas caseras por unidad": "Homemade Croquettes per unit",
+                    "Papas Locas": "Crazy Potatoes",
+                    "Tamales": "Tamales",
+                    "Tostones": "Tostones",
+                    "Frituras de maíz": "Corn Fritters",
+                    "Pata asada": "Roasted Legs",
+                    "Tabla de queso manchego": "Manchego Cheese Board",
+                    "Surtido de quesos": "Cheese Platter",
+                    "Tabla de queso fresco y jamón serrano": "Fresh Cheese and Cured Ham Board",
+                    "Nachos a la mary mixtos": "Mixed Nachos à la Mary",
+                    "Aguacate relleno de salmón": "Avocado Filled with Salmon",
+                    "Tabla de queso fresco": "Fresh Cheese Board",
+                    "Ensalada de la casa": "House Salad",
+                    "Ensalada César": "Caesar Salad",
+                    "Ensalada de aguacate y salmón": "Avocado and Salmon Salad",
+                    "Tosta de ajo": "Garlic Toast",
+                    "Tosta de serrano y tumaca": "Serrano and Tomato Toast",
+                    "Tosta de solomillo y rulo de cabra": "Sirloin and Goat Cheese Toast",
+                    "Tosta de serrano y manchego": "Serrano and Manchego Toast",
+                    "Tosta de aguacate y salmón": "Avocado and Salmon Toast",
+                    "Tosta de ajo, tomate y queso": "Garlic, Tomato and Cheese Toast",
+                    "Salsa de champiñones": "Mushroom Sauce",
+                    "Salsa de Roquefort": "Roquefort Sauce",
+                    "Salsa de pimienta verde": "Green Pepper Sauce",
+                    "Bacalao confitado": "Confit Cod",
+                    "Merluza en salsa verde": "Hake in Green Sauce",
+                    "Bacalao encebollado": "Onion Cod",
+                    "Gordon Blue pollo": "Chicken Gordon Blue",
+                    "Gordon blue de ternera": "Beef Gordon Blue",
+                    "Gordon Blue de cerdo": "Pork Gordon Blue",
+                    "Escalope de pollo": "Chicken Escalope",
+                    "Escalope de ternera": "Beef Escalope",
+                    "Escalope de cerdo": "Pork Escalope",
+                    "Milanesa": "Milanesa",
+                    "Pechuga a la plancha": "Grilled Chicken Breast",
+                    "Carne mechada": "Shredded Meat",
+                    "Carne Cabra": "Goat Meat",
+                    "Pollo de corral": "Free-range Chicken",
+                    "1/2 Pollo de corral": "1/2 Free-range Chicken",
+                    "1/2 Tira de costilla BBQ": "1/2 BBQ Rib Rack",
+                    "Tira de costilla de cerdo BBQ": "BBQ Pork Ribs",
+                    "Entrecot de ternera": "Beef Entrecote",
+                    "Solomillo de ternera": "Beef Tenderloin",
+                    "Chateaubriand": "Chateaubriand",
+                    "Bistec de cerdo": "Pork Steak",
+                    "Bistec de ternera": "Beef Steak",
+                    "Parrillada mixta": "Mixed Grill",
+                    "Secreto Ibérico": "Iberian Secret",
+                    "1/2 Costillar de cerdo BBQ": "1/2 BBQ Pork Ribs",
+                    "Costillar de cerdo BBQ": "BBQ Pork Ribs",
+                    "Puntas de solomillo salteadas con verduras": "Tenderloin Tips Sautéed with Vegetables",
+                    "Solomillo salteado con verduras": "Tenderloin Sautéed with Vegetables",
+                    "Tallarines del mar": "Sea Noodles",
+                    "Espagueti Carbonara": "Carbonara Spaghetti",
+                    "Tallarines salteados con verduras, setas y gambas": "Noodles Stir-fried with Vegetables, Mushrooms and Shrimp",
+                    "Lasaña de carne": "Meat Lasagna",
+                    "Tallarines de setas y gambas": "Mushroom and Shrimp Noodles",
+                    "Espagueti boloñesa": "Bolognese Spaghetti",
+                    "Arroz de bacalao y coliflor": "Cod and Cauliflower Rice",
+                    "Arroz negro de sepia, gambas y merluza": "Black Rice with Cuttlefish, Shrimp and Hake",
+                    "Arroz meloso de pollo, setas y gambas": "Creamy Rice with Chicken, Mushrooms and Shrimp",
+                    "Arroz meloso de solomillo y verduras": "Creamy Rice with Tenderloin and Vegetables",
+                    "Risotto de gambas, cherri confitado y burrata": "Shrimp Risotto with Cherry and Burrata",
+                    "Paella de pescado y marisco": "Fish and Seafood Paella",
+                    "Paella mixta": "Mixed Paella",
+                    "Paella de verduras": "Vegetable Paella",
+                    "Completa cubana de pata asada": "Complete Cuban Roast Leg",
+                    "Completa cubana de bistec de cerdo": "Complete Cuban Pork Steak",
+                    "Completa cubana de carne mechada": "Complete Cuban Shredded Meat",
+                    "Completa cubana de pollo": "Complete Cuban Chicken",
+                    "Completa cubana de masa de cerdo frita": "Complete Cuban Fried Pork Dough",
+                    "Coca-Cola": "Coca-Cola",
+                    "Fanta Naranja": "Fanta Orange",
+                    "Fanta Limón": "Fanta Lemon",
+                    "Sprite": "Sprite",
+                    "Nestea": "Nestea",
+                    "Agua mineral (50cl)": "Mineral Water (50cl)",
+                    "Agua con gas": "Sparkling Water",
+                    "Zumo de naranja natural": "Fresh Orange Juice",
+                    "Cerveza (caña)": "Beer (Draft)",
+                    "Cerveza sin alcohol": "Non-Alcoholic Beer",
+                    "Cocacola original grande": "Large Original Coca-Cola",
+                    "Cocacola cero grande": "Large Coca-Cola Zero",
+                    "Fanta naranja grande": "Large Fanta Orange",
+                    "Fanta limón grande": "Large Fanta Lemon",
+                    "Acuarius naranja": "Aquarius Orange",
+                    "Acuarius limón": "Aquarius Lemon",
+                    "Nestea mango-piña": "Nestea Mango-Pineapple",
+                    "Nestea maracuya": "Nestea Passion Fruit",
+                    "Appletteiser": "Appletiser",
+                    "Zumos de bote": "Canned Juices",
+                    "Red Bull": "Red Bull",
+                    "Arehucas Oro": "Arehucas Gold Rum",
+                    "Arehucas Blanco": "Arehucas White Rum",
+                    "Matusalén 10": "Matusalem 10",
+                    "Matusalén 15": "Matusalem 15",
+                    "Havana 7": "Havana 7",
+                    "Havana 3": "Havana 3",
+                    "Bacardí": "Bacardi",
+                    "Guajiro": "Guajiro",
+                    "Brugal": "Brugal",
+                    "Barceló": "Barcelo",
+                    "Vodka Absolut": "Absolut Vodka",
+                    "Vodka Smirnoff": "Smirnoff Vodka",
+                    "Cacique": "Cacique",
+                    "Legendario": "Legendario",
+                    "Cañey": "Caney",
+                    "Pampero": "Pampero",
+                    "Diplomático": "Diplomatico",
+                    "Jameson": "Jameson",
+                    "100 Pipers": "100 Pipers",
+                    "Jack Daniels": "Jack Daniel's",
+                    "J.B.": "J&B",
+                    "Ballantines": "Ballantine's",
+                    "Chivas Regal": "Chivas Regal",
+                    "White Label": "White Label",
+                    "Bucana": "Buchanan's",
+                    "Glenfiddich": "Glenfiddich",
+                    "Beefeater": "Beefeater",
+                    "Gordons": "Gordon's",
+                    "Larios": "Larios",
+                    "Bombay": "Bombay",
+                    "Puerto de Indias": "Puerto de Indias",
+                    "Tanqueray": "Tanqueray",
+                    "Hendricks": "Hendrick's",
+                    "Brockmans": "Brockmans"
+                }
+            },
+            de: {
+                title: "FAMILIENRESTAURANT",
+                subtitle: "von Mary und Landy",
+                sections: [
+                    "Warme Vorspeisen", "Kalte Vorspeisen", "Salate", "Toasts", "Saucen",
+                    "Fisch", "Fleisch", "Gegrilltes Fleisch", "Pasta", "Reisgerichte",
+                    "Spezialitäten", "Getränke", "Cocktails & Spirituosen"
+                ],
+                allergenNotice: {
+                    title: "⚠️ Allergen-Hinweis",
+                    text: "Für Informationen über Allergene in unseren Gerichten wenden Sie sich bitte an unser Personal. Wir setzen uns für Ihre Sicherheit und Ihr Wohlbefinden ein."
+                },
+                menuItems: {
+                    "Hamburguesa de Black Angus": "Black Angus Burger",
+                    "Gambas al Ajillo": "Knoblauch-Garnelen",
+                    "Croquetas caseras": "Hausgemachte Kroketten",
+                    "Carne fiesta": "Fiesta Fleisch",
+                    "Pimientos de Padrón": "Padrón Paprika",
+                    "Tiras de Pollo": "Hühnchenstreifen",
+                    "Huevos Rotos": "Zerrissene Eier",
+                    "Revuelto de setas y gambas": "Rührei mit Pilzen und Garnelen",
+                    "Gambas en tempura": "Tempura Garnelen",
+                    "Queso Asado": "Gegrillter Käse",
+                    "Croquetas caseras por unidad": "Hausgemachte Kroketten pro Einheit",
+                    "Papas Locas": "Verrückte Kartoffeln",
+                    "Tamales": "Tamales",
+                    "Tostones": "Tostones",
+                    "Frituras de maíz": "Maisfritters",
+                    "Pata asada": "Geröstete Beine",
+                    "Tabla de queso manchego": "Manchego Käseplatte",
+                    "Surtido de quesos": "Käseplatte",
+                    "Tabla de queso fresco y jamón serrano": "Frischer Käse und Serrano-Schinkenplatte",
+                    "Nachos a la mary mixtos": "Gemischte Nachos à la Mary",
+                    "Aguacate relleno de salmón": "Avocado gefüllt mit Lachs",
+                    "Tabla de queso fresco": "Frische Käseplatte",
+                    "Ensalada de la casa": "Hausgemachte Salat",
+                    "Ensalada César": "Caesar Salat",
+                    "Ensalada de aguacate y salmón": "Avocado und Lachs Salat",
+                    "Tosta de ajo": "Knoblauch Toast",
+                    "Tosta de serrano y tumaca": "Serrano und Tomaten Toast",
+                    "Tosta de solomillo y rulo de cabra": "Filet und Ziegenkäse Toast",
+                    "Tosta de serrano y manchego": "Serrano und Manchego Toast",
+                    "Tosta de aguacate y salmón": "Avocado und Lachs Toast",
+                    "Tosta de ajo, tomate und käse": "Knoblauch, Tomate und Käse Toast",
+                    "Salsa de champiñones": "Champignon Sauce",
+                    "Salsa de Roquefort": "Roquefort Sauce",
+                    "Salsa de pimienta verde": "Grüne Paprika Sauce",
+                    "Bacalao confitado": "Konfierter Kabeljau",
+                    "Merluza en salsa verde": "Seehecht in grüner Sauce",
+                    "Bacalao encebollado": "Zwiebel Kabeljau",
+                    "Gordon Blue pollo": "Hühnchen Gordon Blue",
+                    "Gordon blue de ternera": "Rind Gordon Blue",
+                    "Gordon Blue de cerdo": "Schwein Gordon Blue",
+                    "Escalope de pollo": "Hühnchen Schnitzel",
+                    "Escalope de ternera": "Rind Schnitzel",
+                    "Escalope de cerdo": "Schweine Schnitzel",
+                    "Milanesa": "Milanesa",
+                    "Pechuga a la plancha": "Gegrillte Hähnchenbrust",
+                    "Carne mechada": "Zerrissenes Fleisch",
+                    "Carne Cabra": "Ziegenfleisch",
+                    "Pollo de corral": "Freiland Hühnchen",
+                    "1/2 Pollo de corral": "1/2 Freiland Hühnchen",
+                    "1/2 Tira de costilla BBQ": "1/2 BBQ Rippchen",
+                    "Tira de costilla de cerdo BBQ": "BBQ Schweinerippchen",
+                    "Entrecot de ternera": "Rinder Entrecôte",
+                    "Solomillo de ternera": "Rinderfilet",
+                    "Chateaubriand": "Chateaubriand",
+                    "Bistec de cerdo": "Schweine Steak",
+                    "Bistec de ternera": "Rinder Steak",
+                    "Parrillada mixta": "Gemischte Grillplatte",
+                    "Secreto Ibérico": "Iberisches Geheimnis",
+                    "1/2 Costillar de cerdo BBQ": "1/2 BBQ Schweinerippchen",
+                    "Costillar de cerdo BBQ": "BBQ Schweinerippchen",
+                    "Puntas de solomillo salteadas con verduras": "Lendenstücke mit Gemüse",
+                    "Solomillo salteado con verduras": "Lende mit Gemüse",
+                    "Tallarines del mar": "Meeresnudeln",
+                    "Espagueti Carbonara": "Carbonara Spaghetti",
+                    "Tallarines salteados con verduras, setas y gambas": "Nudeln mit Gemüse, Pilzen und Garnelen",
+                    "Lasaña de carne": "Fleisch Lasagne",
+                    "Tallarines de setas y gambas": "Pilz und Garnelen Nudeln",
+                    "Espagueti boloñesa": "Bolognese Spaghetti",
+                    "Arroz de bacalao y coliflor": "Kabeljau und Blumenkohl Reis",
+                    "Arroz negro de sepia, gambas y merluza": "Schwarzer Reis mit Tintenfisch, Garnelen und Seehecht",
+                    "Arroz meloso de pollo, setas y gambas": "Cremiger Reis mit Hühnchen, Pilzen und Garnelen",
+                    "Arroz meloso de solomillo y verduras": "Cremiger Reis mit Lende und Gemüse",
+                    "Risotto de gambas, cherri confitado y burrata": "Garnelen Risotto mit Kirsche und Burrata",
+                    "Paella de pescado y marisco": "Fisch und Meeresfrüchte Paella",
+                    "Paella mixta": "Gemischte Paella",
+                    "Paella de verduras": "Gemüse Paella",
+                    "Completa cubana de pata asada": "Komplette kubanische gebratene Beine",
+                    "Completa cubana de bistec de cerdo": "Komplette kubanische Schweine Steak",
+                    "Completa cubana de carne mechada": "Komplette kubanische zerrissenes Fleisch",
+                    "Completa cubana de pollo": "Komplette kubanische Hühnchen",
+                    "Completa cubana de masa de cerdo frita": "Komplette kubanische frittierte Schweine Teig",
+                    "Coca-Cola": "Coca-Cola",
+                    "Fanta Naranja": "Fanta Orange",
+                    "Fanta Limón": "Fanta Zitrone",
+                    "Sprite": "Sprite",
+                    "Nestea": "Nestea",
+                    "Agua mineral (50cl)": "Mineralwasser (50cl)",
+                    "Agua con gas": "Sprudelwasser",
+                    "Zumo de naranja natural": "Frischer Orangensaft",
+                    "Cerveza (caña)": "Bier (Fass)",
+                    "Cerveza sin alcohol": "Alkoholfreies Bier",
+                    "Cocacola original grande": "Große Original Coca-Cola",
+                    "Cocacola cero grande": "Große Coca-Cola Zero",
+                    "Fanta naranja grande": "Große Fanta Orange",
+                    "Fanta limón grande": "Große Fanta Zitrone",
+                    "Acuarius naranja": "Acuarius Orange",
+                    "Acuarius limón": "Acuarius Zitrone",
+                    "Nestea mango-piña": "Nestea Mango-Ananas",
+                    "Nestea maracuya": "Nestea Maracuja",
+                    "Appletteiser": "Appletiser",
+                    "Zumos de bote": "Dosensäfte",
+                    "Red Bull": "Red Bull",
+                    "Arehucas Oro": "Arehucas Gold Rum",
+                    "Arehucas Blanco": "Arehucas White Rum",
+                    "Matusalén 10": "Matusalem 10",
+                    "Matusalén 15": "Matusalem 15",
+                    "Havana 7": "Havana 7",
+                    "Havana 3": "Havana 3",
+                    "Bacardí": "Bacardi",
+                    "Guajiro": "Guajiro",
+                    "Brugal": "Brugal",
+                    "Barceló": "Barceló",
+                    "Vodka Absolut": "Absolut Vodka",
+                    "Vodka Smirnoff": "Smirnoff Vodka",
+                    "Cacique": "Cacique",
+                    "Legendario": "Legendario",
+                    "Cañey": "Cañey",
+                    "Pampero": "Pampero",
+                    "Diplomático": "Diplomatico",
+                    "Jameson": "Jameson",
+                    "100 Pipers": "100 Pipers",
+                    "Jack Daniels": "Jack Daniel's",
+                    "J.B.": "J&B",
+                    "Ballantines": "Ballantine's",
+                    "Chivas Regal": "Chivas Regal",
+                    "White Label": "White Label",
+                    "Bucana": "Buchanan's",
+                    "Glenfiddich": "Glenfiddich",
+                    "Beefeater": "Beefeater",
+                    "Gordons": "Gordon's",
+                    "Larios": "Larios",
+                    "Bombay": "Bombay",
+                    "Puerto de Indias": "Puerto de Indias",
+                    "Tanqueray": "Tanqueray",
+                    "Hendricks": "Hendrick's",
+                    "Brockmans": "Brockmans"
+                }
+            }
+        };
+
         function addMenuItem(sectionIndex, name, price) {
             const sections = document.querySelectorAll('.menu-items');
             const section = sections[sectionIndex];
             const menuItem = document.createElement('div');
             menuItem.className = 'menu-item';
             menuItem.innerHTML = `
-                <span class="item-name">${name}</span>
+                <span class="item-name" data-es="${name}">${name}</span>
                 <span class="item-price">${price}</span>
             `;
             section.appendChild(menuItem);
         }
 
-        // Limpiar todos los elementos del menú existentes
         document.querySelectorAll('.menu-items').forEach(section => {
             section.innerHTML = '';
         });
 
-        // 0. Entrantes Calientes
         addMenuItem(0, 'Hamburguesa de Black Angus', '8,50€');
         addMenuItem(0, 'Gambas al Ajillo', '8,20€');
         addMenuItem(0, 'Croquetas caseras', '5,80€');
@@ -408,10 +888,6 @@
         addMenuItem(0, 'Tamales', '4,00€');
         addMenuItem(0, 'Tostones', '4,70€');
         addMenuItem(0, 'Frituras de maíz', '7,00€');
-        addMenuItem(0, 'Papas Locas con carne mechada', '');
-        addMenuItem(0, 'Tostones con mechada', '');
-
-        // 1. Entrantes Fríos
         addMenuItem(1, 'Pata asada', '7,55€');
         addMenuItem(1, 'Tabla de queso manchego', '8,00€');
         addMenuItem(1, 'Surtido de quesos', '13,10€');
@@ -419,31 +895,21 @@
         addMenuItem(1, 'Nachos a la mary mixtos', '8,65€');
         addMenuItem(1, 'Aguacate relleno de salmón', '8,65€');
         addMenuItem(1, 'Tabla de queso fresco', '16,50€');
-
-        // 2. Ensaladas
         addMenuItem(2, 'Ensalada de la casa', '8,80€');
         addMenuItem(2, 'Ensalada César', '8,80€');
         addMenuItem(2, 'Ensalada de aguacate y salmón', '');
-
-        // 3. Tostas
         addMenuItem(3, 'Tosta de ajo', '2,55€');
         addMenuItem(3, 'Tosta de serrano y tumaca', '6,15€');
         addMenuItem(3, 'Tosta de solomillo y rulo de cabra', '7,50€');
         addMenuItem(3, 'Tosta de serrano y manchego', '7,55€');
         addMenuItem(3, 'Tosta de aguacate y salmón', '8,65€');
         addMenuItem(3, 'Tosta de ajo, tomate y queso', '4,20€');
-
-        // 4. Salsas
         addMenuItem(4, 'Salsa de champiñones', '3,10€');
         addMenuItem(4, 'Salsa de Roquefort', '3,10€');
         addMenuItem(4, 'Salsa de pimienta verde', '3,10€');
-
-        // 5. Pescados
         addMenuItem(5, 'Bacalao confitado', '16,20€');
         addMenuItem(5, 'Merluza en salsa verde', '14,95€');
         addMenuItem(5, 'Bacalao encebollado', '16,20€');
-
-        // 6. Carnes
         addMenuItem(6, 'Gordon Blue pollo', '9,60€');
         addMenuItem(6, 'Gordon blue de ternera', '12,10€');
         addMenuItem(6, 'Gordon Blue de cerdo', '10,00€');
@@ -454,8 +920,6 @@
         addMenuItem(6, 'Pechuga a la plancha', '8,10€');
         addMenuItem(6, 'Carne mechada', '9,50€');
         addMenuItem(6, 'Carne Cabra', '9,50€');
-
-        // 7. Carnes a la brasa
         addMenuItem(7, 'Pollo de corral', '10,00€');
         addMenuItem(7, '1/2 Pollo de corral', '7,00€');
         addMenuItem(7, '1/2 Tira de costilla BBQ', '8,65€');
@@ -471,16 +935,12 @@
         addMenuItem(7, 'Costillar de cerdo BBQ', '20,50€');
         addMenuItem(7, 'Puntas de solomillo salteadas con verduras', '19,60€');
         addMenuItem(7, 'Solomillo salteado con verduras', '20,10€');
-
-        // 8. Pastas
         addMenuItem(8, 'Tallarines del mar', '9,50€');
         addMenuItem(8, 'Espagueti Carbonara', '7,95€');
         addMenuItem(8, 'Tallarines salteados con verduras, setas y gambas', '9,45€');
         addMenuItem(8, 'Lasaña de carne', '9,10€');
         addMenuItem(8, 'Tallarines de setas y gambas', '9,10€');
         addMenuItem(8, 'Espagueti boloñesa', '8,65€');
-
-        // 9. Arroces
         addMenuItem(9, 'Arroz de bacalao y coliflor', '22,40€');
         addMenuItem(9, 'Arroz negro de sepia, gambas y merluza', '22,40€');
         addMenuItem(9, 'Arroz meloso de pollo, setas y gambas', '22,40€');
@@ -489,25 +949,56 @@
         addMenuItem(9, 'Paella de pescado y marisco', '22,40€');
         addMenuItem(9, 'Paella mixta', '24,40€');
         addMenuItem(9, 'Paella de verduras', '18,20€');
-
-        // 10. Platos Especiales
         addMenuItem(10, 'Completa cubana de pata asada', '14,00€');
         addMenuItem(10, 'Completa cubana de bistec de cerdo', '14,00€');
         addMenuItem(10, 'Completa cubana de carne mechada', '14,00€');
         addMenuItem(10, 'Completa cubana de pollo', '14,00€');
         addMenuItem(10, 'Completa cubana de masa de cerdo frita', '14,00€');
-
-        // 11. Refrescos
-        addMenuItem(11, 'Coca-Cola', '2,50€');
-        addMenuItem(11, 'Fanta Naranja', '2,50€');
-        addMenuItem(11, 'Fanta Limón', '2,50€');
-        addMenuItem(11, 'Sprite', '2,50€');
-        addMenuItem(11, 'Nestea', '2,70€');
-        addMenuItem(11, 'Agua mineral (50cl)', '1,80€');
-        addMenuItem(11, 'Agua con gas', '2,00€');
-        addMenuItem(11, 'Zumo de naranja natural', '3,50€');
-        addMenuItem(11, 'Cerveza (caña)', '2,20€');
-        addMenuItem(11, 'Cerveza sin alcohol', '2,30€');
+        addMenuItem(11, 'Cocacola original grande', '1,80€');
+        addMenuItem(11, 'Cocacola cero grande', '1,80€');
+        addMenuItem(11, 'Fanta naranja grande', '1,80€');
+        addMenuItem(11, 'Fanta limón grande', '1,80€');
+        addMenuItem(11, 'Acuarius naranja', '1,50€');
+        addMenuItem(11, 'Acuarius limón', '1,50€');
+        addMenuItem(11, 'Nestea mango-piña', '1,60€');
+        addMenuItem(11, 'Nestea maracuya', '1,60€');
+        addMenuItem(11, 'Appletteiser', '1,30€');
+        addMenuItem(11, 'Zumos de bote', '1,30€');
+        addMenuItem(11, 'Red Bull', '2,00€');
+        addMenuItem(12, 'Arehucas Oro', '2,20€');
+        addMenuItem(12, 'Arehucas Blanco', '2,20€');
+        addMenuItem(12, 'Matusalén 10', '4,50€');
+        addMenuItem(12, 'Matusalén 15', '4,70€');
+        addMenuItem(12, 'Havana 7', '3,90€');
+        addMenuItem(12, 'Havana 3', '2,40€');
+        addMenuItem(12, 'Bacardí', '2,40€');
+        addMenuItem(12, 'Guajiro', '2,00€');
+        addMenuItem(12, 'Brugal', '2,60€');
+        addMenuItem(12, 'Barceló', '2,10€');
+        addMenuItem(12, 'Vodka Absolut', '2,60€');
+        addMenuItem(12, 'Vodka Smirnoff', '2,90€');
+        addMenuItem(12, 'Cacique', '3,20€');
+        addMenuItem(12, 'Legendario', '2,60€');
+        addMenuItem(12, 'Cañey', '2,70€');
+        addMenuItem(12, 'Pampero', '3,20€');
+        addMenuItem(12, 'Diplomático', '4,80€');
+        addMenuItem(12, 'Jameson', '2,80€');
+        addMenuItem(12, '100 Pipers', '2,30€');
+        addMenuItem(12, 'Jack Daniels', '3,60€');
+        addMenuItem(12, 'J.B.', '2,20€');
+        addMenuItem(12, 'Ballantines', '2,20€');
+        addMenuItem(12, 'Chivas Regal', '4,20€');
+        addMenuItem(12, 'White Label', '2,20€');
+        addMenuItem(12, 'Bucana', '4,90€');
+        addMenuItem(12, 'Glenfiddich', '4,50€');
+        addMenuItem(12, 'Beefeater', '2,70€');
+        addMenuItem(12, 'Gordons', '2,70€');
+        addMenuItem(12, 'Larios', '2,70€');
+        addMenuItem(12, 'Bombay', '4,15€');
+        addMenuItem(12, 'Puerto de Indias', '4,20€');
+        addMenuItem(12, 'Tanqueray', '4,20€');
+        addMenuItem(12, 'Hendricks', '5,00€');
+        addMenuItem(12, 'Brockmans', '5,00€');
 
         function setMenuItemDelay() {
             const menuItems = document.querySelectorAll('.menu-item');
@@ -517,6 +1008,25 @@
         }
 
         setMenuItemDelay();
+
+        function updateLanguage(lang) {
+            document.querySelectorAll('.menu-section h2').forEach((header, index) => {
+                header.textContent = translations[lang].sections[index];
+            });
+            document.querySelector('.allergen-notice h2').textContent = translations[lang].allergenNotice.title;
+            document.querySelector('.allergen-notice p').textContent = translations[lang].allergenNotice.text;
+
+            document.querySelectorAll('.item-name').forEach(item => {
+                const originalText = item.getAttribute('data-es');
+                item.textContent = translations[lang].menuItems[originalText] || originalText;
+            });
+        }
+
+        document.getElementById('languageSelect').addEventListener('change', function() {
+            updateLanguage(this.value);
+        });
+        
+        updateLanguage('es');
     </script>
 </body>
 </html>
