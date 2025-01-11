@@ -211,11 +211,11 @@
                         <h2 class="section-title">${section.title}</h2>
                         <div class="menu-items-grid">
                             ${sectionItems.map(item => `
-                                <div class="menu-item-card">
+                                <div class="menu-item-card" data-item-id="${item.id}">
                                     <input type="text" value="${item.name}" readonly>
                                     <input type="number" step="0.01" value="${item.price}" 
                                            onchange="updatePrice(${item.id}, this.value)">
-                                    <button class="save-button" onclick="savePrice(${item.id})">
+                                    <button class="save-button" onclick="updatePrice(${item.id}, this.previousElementSibling.value)">
                                         Guardar
                                     </button>
                                 </div>
@@ -229,6 +229,10 @@
 
         async function updatePrice(itemId, newPrice) {
             const button = document.querySelector(`[data-item-id="${itemId}"] .save-button`);
+            const priceInput = document.querySelector(`[data-item-id="${itemId}"] input[type="number"]`);
+            
+            if (!button || !priceInput) return;
+
             button.disabled = true;
             button.textContent = 'Actualizando...';
 
@@ -250,13 +254,8 @@
 
                 button.textContent = '¡Actualizado!';
                 button.style.backgroundColor = '#4CAF50';
+                priceInput.value = numericPrice.toFixed(2);
                 
-                // Actualizar el input con el precio formateado
-                const priceInput = document.querySelector(`[data-item-id="${itemId}"] input[type="number"]`);
-                if (priceInput) {
-                    priceInput.value = numericPrice.toFixed(2);
-                }
-
                 setTimeout(() => {
                     button.disabled = false;
                     button.textContent = 'Guardar';
