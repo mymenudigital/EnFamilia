@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +33,7 @@
             padding: 20px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .section-title {
@@ -53,7 +54,7 @@
             background-color: var(--pale-gold);
             padding: 15px;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .menu-item-card input {
@@ -84,7 +85,7 @@
             padding: 20px;
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         .login-form input {
@@ -106,6 +107,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="loginSection" class="login-container">
         <h2 class="section-title">Iniciar Sesión</h2>
@@ -125,7 +127,7 @@
     <script>
         const SUPABASE_URL = 'https://eqvbkbxkiarjocmsfhtg.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxdmJrYnhraWFyam9jbXNmaHRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY1OTAzMzUsImV4cCI6MjA1MjE2NjMzNX0.BPwUTxP9ppNKo1qYZiwx_PM_Gq62eMq_cHyg4oXQe5s';
-        
+
         // Crear el cliente de Supabase correctamente
         const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
@@ -138,7 +140,7 @@
             { title: 'Salsas', items: [] },
             { title: 'Pescados', items: [] },
             { title: 'Carnes', items: [] },
-            { title: 'Carnes a la Brasa', items: [] },
+            { title: 'Carnes a la Parrilla', items: [] },
             { title: 'Pastas', items: [] },
             { title: 'Arroces', items: [] },
             { title: 'Platos Especiales', items: [] },
@@ -205,7 +207,7 @@
 
             menuStructure.forEach((section, sectionIndex) => {
                 const sectionItems = items.filter(item => item.section_index === sectionIndex);
-                
+
                 const sectionHTML = `
                     <div class="menu-section">
                         <h2 class="section-title">${section.title}</h2>
@@ -230,7 +232,7 @@
         async function updatePrice(itemId, newPrice) {
             const button = document.querySelector(`[data-item-id="${itemId}"] .save-button`);
             const priceInput = document.querySelector(`[data-item-id="${itemId}"] input[type="number"]`);
-            
+
             if (!button || !priceInput) return;
 
             button.disabled = true;
@@ -245,7 +247,7 @@
 
                 const { data, error } = await supabase
                     .from('menu_items')
-                    .update({ 
+                    .update({
                         price: numericPrice.toFixed(2) // Asegurar 2 decimales
                     })
                     .eq('id', itemId);
@@ -255,7 +257,7 @@
                 button.textContent = '¡Actualizado!';
                 button.style.backgroundColor = '#4CAF50';
                 priceInput.value = numericPrice.toFixed(2);
-                
+
                 setTimeout(() => {
                     button.disabled = false;
                     button.textContent = 'Guardar';
@@ -266,7 +268,7 @@
                 console.error('Error actualizando precio:', error);
                 button.textContent = 'Error';
                 button.style.backgroundColor = '#f44336';
-                
+
                 setTimeout(() => {
                     button.disabled = false;
                     button.textContent = 'Guardar';
@@ -286,4 +288,5 @@
         });
     </script>
 </body>
-</html> 
+
+</html>

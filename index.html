@@ -1,4 +1,7 @@
-<html><head><base href="./">
+<html>
+
+<head>
+    <base href="./">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RESTAURANTE EN FAMILIA - Menú Dorado</title>
@@ -16,7 +19,7 @@
             --charcoal: #2C3E50;
             --cream: #FFFDF0;
         }
-        
+
         body {
             font-family: 'Cormorant Garamond', serif;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23FFFDF0"/><path d="M0 0L100 100M100 0L0 100" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></svg>');
@@ -25,7 +28,7 @@
             margin: 0;
             padding: 0;
             line-height: 1.6;
-            font-size: 18px; 
+            font-size: 18px;
         }
 
         .container {
@@ -33,75 +36,82 @@
             margin: 0 auto;
             padding: 20px;
             background-color: rgba(255, 253, 240, 0.9);
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
             position: relative;
         }
 
         .logo-container {
             text-align: center;
-            margin-bottom: 40px; /* Increased from 30px */
-            padding: 20px 0; /* Added padding */
+            margin-bottom: 40px;
+            /* Increased from 30px */
+            padding: 20px 0;
+            /* Added padding */
         }
 
         .logo-image {
-            max-width: 400px; /* Increased from 300px */
+            max-width: 400px;
+            /* Increased from 300px */
             height: auto;
-            width: 100%; /* Added to ensure responsiveness */
+            width: 100%;
+            /* Added to ensure responsiveness */
         }
 
         @media (max-width: 768px) {
             body {
-                font-size: 16px; 
+                font-size: 16px;
             }
-            
+
             .container {
                 padding: 10px;
             }
-            
+
             .logo-image {
-                max-width: 300px; /* Increased from 200px */
+                max-width: 300px;
+                /* Increased from 200px */
             }
-            
+
             .menu-section {
                 margin-bottom: 20px;
             }
-            
+
             .menu-section h2 {
                 font-size: 1.8em;
                 padding: 15px 0;
             }
-            
+
             .menu-section h2::before,
             .menu-section h2::after {
                 display: none;
             }
-            
+
             .banner-image {
                 height: 120px;
             }
-            
+
             .menu-items {
                 padding: 10px;
             }
-            
+
             .menu-item {
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 10px;
             }
-            
-            .item-name, .item-price {
+
+            .item-name,
+            .item-price {
                 font-size: 1.1em;
                 margin-bottom: 5px;
             }
-            
+
             .item-price {
                 align-self: flex-end;
             }
 
             .allergen-image {
-                width: 300px; /* Increased from 120px */
+                width: 300px;
+                /* Increased from 120px */
                 margin-top: 15px;
             }
         }
@@ -112,7 +122,7 @@
             border-radius: 10px;
             overflow: hidden;
             background: linear-gradient(to bottom right, var(--pale-gold), var(--cream));
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .menu-section h2 {
@@ -123,7 +133,7 @@
             background-color: rgba(255, 248, 220, 0.9);
             position: relative;
             z-index: 1;
-            font-size: 2.5em; 
+            font-size: 2.5em;
             letter-spacing: 2px;
             font-weight: 700;
             border-top: 3px solid var(--gold);
@@ -183,7 +193,7 @@
             animation: fadeInUp 0.5s ease forwards;
             opacity: 0;
             background-color: rgba(255, 253, 240, 0.7);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .menu-item::before {
@@ -200,7 +210,7 @@
         .menu-item:hover {
             background-color: rgba(255, 215, 0, 0.2);
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
 
         .menu-item:hover::before {
@@ -210,14 +220,14 @@
         .item-name {
             font-weight: 700;
             color: var(--dark-gold);
-            font-size: 1.3em; 
+            font-size: 1.3em;
         }
 
         .item-price {
             color: var(--dark-gold);
             font-weight: 700;
-            font-size: 1.3em; 
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            font-size: 1.3em;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInUp {
@@ -225,6 +235,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -240,11 +251,12 @@
             border-radius: 10px;
             padding: 20px;
             background-color: var(--pale-gold);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .allergen-image {
-            width: 200px; /* Increased from 150px */
+            width: 200px;
+            /* Increased from 150px */
             height: auto;
             margin-top: 20px;
         }
@@ -290,6 +302,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="language-select">
@@ -303,77 +316,77 @@
         <div class="logo-container">
             <img src="./images/logo.png" alt="Restaurante en Familia - Mary y Landy" class="logo-image">
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/entrantes_calientes.jpg" alt="Entrantes calientes" class="banner-image">
             <h2>Entrantes Calientes</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/entrantes_frios.jpg" alt="Entrantes Fríos" class="banner-image">
             <h2>Entrantes Fríos</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/ensaladas.jpg" alt="Ensalada" class="banner-image">
             <h2>Ensaladas</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/tostas.jpg" alt="Tostas" class="banner-image">
             <h2>Tostas</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/salsas.jpg" alt="Salsas" class="banner-image">
             <h2>Salsas</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/pescados.jpg" alt="Pescado" class="banner-image">
             <h2>Pescados</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/carnes.jpg" alt="Carnes" class="banner-image">
             <h2>Carnes</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/carnes_brasa.jpg" alt="Carnes a la brasa" class="banner-image">
-            <h2>Carnes a la Brasa</h2>
+            <h2>Carnes a la Parrilla</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/pastas.jpg" alt="Pasta" class="banner-image">
             <h2>Pastas</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/arroces.jpg" alt="Arroces" class="banner-image">
             <h2>Arroces</h2>
             <div class="menu-items">
             </div>
         </div>
-        
+
         <div class="menu-section">
             <img src="./images/platos_especiales.jpg" alt="Plato especial" class="banner-image">
             <h2>Platos Especiales</h2>
@@ -398,7 +411,8 @@
         <div class="allergen-notice">
             <div class="allergen-text">
                 <h2>⚠️ Aviso de Alérgenos</h2>
-                <p>Para información sobre alérgenos en nuestros platos, por favor consulte con nuestro personal. Estamos comprometidos con su seguridad y bienestar.</p>
+                <p>Para información sobre alérgenos en nuestros platos, por favor consulte con nuestro personal. Estamos
+                    comprometidos con su seguridad y bienestar.</p>
             </div>
             <img src="./images/alergenos.png" alt="Aviso de alérgenos" class="allergen-image">
         </div>
@@ -411,7 +425,7 @@
                 subtitle: "por Mary y Landy",
                 sections: [
                     "Entrantes Calientes", "Entrantes Fríos", "Ensaladas", "Tostas", "Salsas",
-                    "Pescados", "Carnes", "Carnes a la Brasa", "Pastas", "Arroces",
+                    "Pescados", "Carnes", "Carnes a la Parrilla", "Pastas", "Arroces",
                     "Platos Especiales", "Refrescos", "Cócteles y Licores"
                 ],
                 allergenNotice: {
@@ -562,7 +576,7 @@
                 subtitle: "by Mary and Landy",
                 sections: [
                     "Hot Appetizers", "Cold Appetizers", "Salads", "Toasts", "Sauces",
-                    "Fish", "Meats", "Grilled Meats", "Pasta", "Rice Dishes",
+                    "Fish", "Meats", "Grill", "Pasta", "Rice Dishes",
                     "Special Dishes", "Drinks", "Cocktails & Spirits"
                 ],
                 allergenNotice: {
@@ -713,7 +727,7 @@
                 subtitle: "von Mary und Landy",
                 sections: [
                     "Warme Vorspeisen", "Kalte Vorspeisen", "Salate", "Toasts", "Saucen",
-                    "Fisch", "Fleisch", "Gegrilltes Fleisch", "Pasta", "Reisgerichte",
+                    "Fisch", "Fleisch", "Grill", "Pasta", "Reisgerichte",
                     "Spezialitäten", "Getränke", "Cocktails & Spirituosen"
                 ],
                 allergenNotice: {
@@ -920,7 +934,7 @@
         // Función de fallback con los datos estáticos
         function loadFallbackMenu() {
             console.log('Cargando menú de respaldo...');
-            
+
             // Limpiar las secciones existentes
             document.querySelectorAll('.menu-items').forEach(section => {
                 section.innerHTML = '';
@@ -960,18 +974,18 @@
             });
         }
 
-        document.getElementById('languageSelect').addEventListener('change', function() {
+        document.getElementById('languageSelect').addEventListener('change', function () {
             updateLanguage(this.value);
         });
-        
+
         updateLanguage('es');
 
         async function setupRealtimeUpdates() {
             const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
-            
+
             const subscription = supabase
                 .channel('menu_changes')
-                .on('postgres_changes', 
+                .on('postgres_changes',
                     {
                         event: 'UPDATE',
                         schema: 'public',
@@ -986,7 +1000,7 @@
                             const priceElement = itemElement.querySelector('.item-price');
                             if (priceElement) {
                                 priceElement.textContent = `${updatedItem.price}€`;
-                                
+
                                 // Efecto visual para mostrar el cambio
                                 priceElement.style.backgroundColor = '#FFD700';
                                 setTimeout(() => {
@@ -1005,4 +1019,5 @@
         });
     </script>
 </body>
+
 </html>
