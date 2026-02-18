@@ -14,8 +14,13 @@
         window.SUPABASE_URL = window.SUPABASE_URL || '__SUPABASE_URL__';
         window.SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '__SUPABASE_KEY__';
 
-        const { createClient } = supabase;
-        window.supabaseClient = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+        try {
+            const { createClient } = window.supabase;
+            window.supabaseClient = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
+            console.log('Supabase initialized successfully');
+        } catch (err) {
+            console.error('Error initializing Supabase:', err);
+        }
     </script>
     <style>
         :root {
@@ -243,6 +248,10 @@
         // --- GESTIÓN DE SESIÓN ---
 
         async function checkSession() {
+            if (!window.supabaseClient) {
+                console.error('Supabase client not initialized');
+                return;
+            }
             const { data: { session } } = await window.supabaseClient.auth.getSession();
             if (session) {
                 showDashboard();
@@ -251,6 +260,10 @@
 
         async function handleLogin(e) {
             e.preventDefault();
+            if (!window.supabaseClient) {
+                showMessage('loginMessage', 'Error: Cliente Supabase no inicializado', 'error');
+                return;
+            }
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const msgDiv = document.getElementById('loginMessage');
