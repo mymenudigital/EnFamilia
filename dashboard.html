@@ -7,17 +7,16 @@
     <title>Dashboard - Gestión de Precios</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-    <!-- Carga variables de entorno locales o inyectadas -->
-    <script src="env.js"></script>
     <script>
-        // Si env.js no existe (producción sin configuración manual), usa valores por defecto o espera inyección
-        window.SUPABASE_URL = window.SUPABASE_URL || '__SUPABASE_URL__';
-        window.SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY || '__SUPABASE_KEY__';
+        // HARDCODED CREDENTIALS - Safe because RLS protects the data
+        window.SUPABASE_URL = 'https://eqvbkbxkiarjocmsfhtg.supabase.co';
+        window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVxdmJrYnhraWFyam9jbXNmaHRnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzY1OTAzMzUsImV4cCI6MjA1MjE2NjMzNX0.BPwUTxP9ppNKo1qYZiwx_PM_Gq62eMq_cHyg4oXQe5s';
 
         try {
             const { createClient } = window.supabase;
+            // Force create a new client with these keys
             window.supabaseClient = createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
-            console.log('Supabase initialized successfully');
+            console.log('Supabase initialized with hardcoded keys');
         } catch (err) {
             console.error('Error initializing Supabase:', err);
         }
